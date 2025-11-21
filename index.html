@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb3c6 50%, #ff9eaf 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .heart-particle {
+            position: fixed;
+            font-size: 20px;
+            animation: float-up 8s infinite ease-in;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Welcome Modal */
+        #welcomeModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #welcomeModal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc9d9 100%);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+            max-width: 400px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ff9eaf, #ffb3c6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .modal-content h2 {
+            color: #d81b60;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ff9eaf;
+            border-radius: 15px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            background: white;
+            color: #d81b60;
+        }
+
+        .modal-content button {
+            background: linear-gradient(135deg, #ff6b9d, #c2185b);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .error-msg {
+            color: #c2185b;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Main Content */
+        #mainContent {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        #mainContent.visible {
+            display: block;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .welcome-header h1 {
+            font-size: 48px;
+            color: #d81b60;
+            text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .welcome-header p {
+            font-size: 20px;
+            color: #880e4f;
+            font-style: italic;
+        }
+
+        /* Music Section */
+        .music-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .music-button {
+            background: linear-gradient(135deg, #ff6b9d, #c2185b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .music-button:hover {
+            transform: scale(1.05);
+        }
+
+        .song-list {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .song-list.visible {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .song-item {
+            background: linear-gradient(135deg, #ffe5ec, #ffc9d9);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            color: #d81b60;
+            font-weight: bold;
+        }
+
+        .song-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .audio-player {
+            display: none;
+            text-align: center;
+            animation: glow 2s ease infinite;
+        }
+
+        .audio-player.playing {
+            display: block;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.9)); }
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+        }
+
+        /* Love Traits Section */
+        .love-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .love-section h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #d81b60;
+            margin-bottom: 30px;
+        }
+
+        .trait-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .trait-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c2185b);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .trait-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .trait-btn.active {
+            background: linear-gradient(135deg, #c2185b, #880e4f);
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            justify-items: center;
+        }
+
+        .image-gallery.visible {
+            display: grid;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            animation: staggerIn 0.6s ease forwards;
+            opacity: 0;
+            width: min(320px, 100%);
+            height: 220px;
+            background: linear-gradient(135deg, #ffe5ec, #ffc9d9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d81b60;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes staggerIn {
+            from {
+                transform: translateY(30px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .love-message {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffe5ec, #ffc9d9);
+            border-radius: 20px;
+            color: #d81b60;
+            font-size: 20px;
+            font-style: italic;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Firecracker Animation */
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+
+        /* Loading Screen */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b9d, #c2185b);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #loadingScreen.visible {
+            display: flex;
+        }
+
+        .loading-content h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fff, #ffe5ec);
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .progress-text {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .surprise-btn {
+            display: none;
+            background: white;
+            color: #c2185b;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: pulse 1.5s infinite;
+        }
+
+        .surprise-btn.visible {
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Birthday Reveal Screen */
+        #birthdayReveal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff9eaf, #c2185b);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 998;
+            overflow: hidden;
+        }
+
+        #birthdayReveal.visible {
+            display: flex;
+        }
+
+        .kiss-emoji {
+            position: absolute;
+            font-size: 40px;
+            animation: float-kiss 10s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes float-kiss {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -30px) rotate(10deg); }
+            50% { transform: translate(-20px, -60px) rotate(-10deg); }
+            75% { transform: translate(30px, -30px) rotate(5deg); }
+        }
+
+        .birthday-text {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInScale 2s ease-in-out;
+        }
+
+        .birthday-text h1 {
+            font-size: 72px;
+            color: white;
+            text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .birthday-text p {
+            font-size: 36px;
+            color: #ffe5ec;
+            font-style: italic;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .close-reveal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            color: #c2185b;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Birthday Banner */
+        .birthday-banner {
+            background: linear-gradient(135deg, #ff6b9d, #c2185b);
+            padding: 30px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.5);
+            animation: glow 3s ease infinite;
+        }
+
+        .birthday-banner h2 {
+            font-size: 48px;
+            color: white;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+            animation: colorShift 3s infinite;
+        }
+
+        @keyframes colorShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+
+        /* Special Message Section */
+        .special-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .special-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c2185b);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .special-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .message-panel {
+            display: none;
+            margin-top: 20px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffe5ec, #ffc9d9);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+        }
+
+        .message-panel.visible {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .typing-text {
+            font-size: 24px;
+            color: #d81b60;
+            font-style: italic;
+            min-height: 100px;
+        }
+
+        .date-reveal {
+            font-size: 48px;
+            color: #c2185b;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeInScale 1s ease;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-header h1 {
+                font-size: 36px;
+            }
+            
+            .trait-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .song-list.visible {
+                grid-template-columns: 1fr;
+            }
+
+            .birthday-text h1 {
+                font-size: 48px;
+            }
+
+            .birthday-text p {
+                font-size: 24px;
+            }
+
+            .birthday-banner h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div id="welcomeModal">
+        <div class="modal-content">
+            <div class="modal-image"><img src="imags/she.jpeg" alt="she"></div>
+            <h2>What's your name 🤨 </h2>
+            <p>(just enter your name here 🔪)</p>
+            <input type="text" id="nameInput" placeholder="Enter your name...">
+            <button onclick="validateName()">Enter ❤️</button>
+            <p class="error-msg" id="errorMsg">That's not the right name, enter your real name! 💕</p>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <div class="loading-content">
+            <h2>Preparing something special for you...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text"><span id="progressPercent">0</span>%</p>
+            <button class="surprise-btn" id="surpriseBtn" onclick="showBirthdayReveal()"> SURPRISE! 😍</button>
+        </div>
+    </div>
+
+    <!-- Birthday Reveal Screen -->
+    <div id="birthdayReveal">
+        <button class="close-reveal" onclick="closeBirthdayReveal()">Continue →</button>
+        <div class="birthday-text">
+            <h1>HAPPY 18TH BIRTHDAY</h1>
+            <p>MY BUBU 💖</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <div class="welcome-header">
+            <h1>Welcome, <span id="userName"></span> ❤️</h1>
+            <p>This day is all about you! 🎂✨</p>
+        </div>
+
+        <!-- Birthday Banner -->
+        <div class="birthday-banner">
+            <h2>🎂 Happy 18th Birthday Baby 🎂</h2>
+        </div>
+
+        <!-- First Message Section -->
+        <div class="special-section">
+            <button class="special-btn" onclick="toggleFirstMessage()">💌 My First Message To You</button>
+            <div class="message-panel" id="firstMessagePanel">
+                <div class="typing-text" id="typingText"></div>
+            </div>
+        </div>
+
+        <!-- First Kiss Section -->
+        <div class="special-section">
+            <button class="special-btn" onclick="showFirstKiss()">💌 Our First Kissii...</button>
+            <div class="message-panel" id="firstKissPanel">
+                <div class="date-reveal" id="dateReveal"></div>
+            </div>
+        </div>
+
+        <!-- Music Section -->
+        <div class="music-section">
+            <button class="music-button" onclick="toggleSongList()">🎵 Choose a Song to celebrate your day</button>
+            <div class="song-list" id="songList">
+                <div class="song-item" onclick="playSong('The Truth 😌')">The Truth 😌</div>
+                <div class="song-item" onclick="playSong('My Fav ✨')">My Fav ✨</div>
+                <div class="song-item" onclick="playSong('Nakchari 🤭')">Nakchari 🤭</div>
+                <div class="song-item" onclick="playSong('Our Song 😌')">Our Song 😌</div>
+            </div>
+            <div class="audio-player" id="audioPlayer">
+                <p style="color: #d81b60; margin-bottom: 10px;">Now Playing: <span id="songTitle"></span></p>
+                <audio id="audioElement" controls>
+                    <source src="" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+        <!-- Love Traits Section -->
+        <div class="love-section">
+            <h2>💗 What I Love About You</h2>
+            <div class="trait-buttons">
+                <button class="trait-btn" onclick="showTrait('simplicity')">How Simple are You</button>
+                <button class="trait-btn" onclick="showTrait('kindness')">Your Kindness</button>
+                <button class="trait-btn" onclick="showTrait('smile')">Your Smile</button>
+                <button class="trait-btn" onclick="showTrait('cuteness')">Your Cuteness</button>
+                <button class="trait-btn" onclick="showTrait('us')">Our Memories</button>
+            </div>
+
+            <!-- Image Galleries for each trait -->
+            <div class="image-gallery" id="gallery-simplicity">
+                <div class="gallery-item"><img src="imags/simple1.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/simple2.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/simple3.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/simple4.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/simple5.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/simple6.jpg" alt="My Image"></div>
+            </div>
+
+            <div class="image-gallery" id="gallery-kindness">
+                <div class="gallery-item"><img src="imags/kd1.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/kd2.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/kd3.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/kd4.jpg" alt="My Image"></div>
+                
+            </div>
+
+            <div class="image-gallery" id="gallery-smile">
+                <div class="gallery-item"><img src="imags/smile2.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/smile1.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/smile3.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/smile4.jpg" alt="My Image"></div>
+                
+            </div>
+
+            <div class="image-gallery" id="gallery-cuteness">
+                <div class="gallery-item"><img src="imags/c1.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c2.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c3.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c4.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c5.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c6.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c7.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/c8.jpg" alt="My Image"></div>
+                
+            </div>
+            <div class="image-gallery" id="gallery-us">
+                <div class="gallery-item"><img src="imags/us1.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us2.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us3.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us4.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us5.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us6.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us7.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us8.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us9.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us10.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us11.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us12.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us13.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us14.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us15.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us16.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us17.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us18.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us19.jpg" alt="My Image"></div>
+                <div class="gallery-item"><img src="imags/us20.jpg" alt="My Image"></div>
+                
+            </div>
+
+            <div class="love-message">
+                This is made just for you, with all my love and coding skill 😌💖<br>
+                You mean the world to me, today and always ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        setInterval(createHeart, 800);
+
+        // Create firework effect
+        function createFirework(x, y) {
+            const colors = ['#ff6b9d', '#c2185b', '#ffd1dc', '#ffb3c6', '#fff'];
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            document.body.appendChild(firework);
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / 30;
+                const velocity = 50 + Math.random() * 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                firework.appendChild(particle);
+            }
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        // Launch multiple fireworks
+        function launchFireworks() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createFirework(x, y);
+                }, i * 200);
+            }
+        }
+
+        // Validate name and show loading
+        function validateName() {
+            const input = document.getElementById('nameInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if (input.toLowerCase() === 'bubu') {
+                document.getElementById('userName').textContent = input;
+                document.getElementById('welcomeModal').classList.add('hidden');
+                document.getElementById('loadingScreen').classList.add('visible');
+                
+                // Start loading animation
+                startLoading();
+            } else {
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Loading animation
+        function startLoading() {
+            let progress = 0;
+            const progressFill = document.getElementById('progressFill');
+            const progressPercent = document.getElementById('progressPercent');
+            const surpriseBtn = document.getElementById('surpriseBtn');
+
+            const interval = setInterval(() => {
+                progress += 2;
+                progressFill.style.width = progress + '%';
+                progressPercent.textContent = progress;
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    surpriseBtn.classList.add('visible');
+                }
+            }, 50);
+        }
+
+        // Show birthday reveal with kiss emojis
+        function showBirthdayReveal() {
+            document.getElementById('loadingScreen').classList.remove('visible');
+            document.getElementById('birthdayReveal').classList.add('visible');
+            
+            // Create floating kiss emojis
+            for (let i = 0; i < 30; i++) {
+                const kiss = document.createElement('div');
+                kiss.className = 'kiss-emoji';
+                kiss.innerHTML = '💋';
+                kiss.style.left = Math.random() * 100 + '%';
+                kiss.style.top = Math.random() * 100 + '%';
+                kiss.style.animationDelay = Math.random() * 5 + 's';
+                document.getElementById('birthdayReveal').appendChild(kiss);
+            }
+            
+            // Launch fireworks
+            launchFireworks();
+        }
+
+        // Close birthday reveal and show main content
+        function closeBirthdayReveal() {
+            document.getElementById('birthdayReveal').classList.remove('visible');
+            document.getElementById('mainContent').classList.add('visible');
+            
+            // Launch more fireworks
+            launchFireworks();
+        }
+
+        // Toggle song list
+        function toggleSongList() {
+            const songList = document.getElementById('songList');
+            songList.classList.toggle('visible');
+        }
+
+        // Play song
+        function playSong(songName) {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const songTitle = document.getElementById('songTitle');
+            const audioElement = document.getElementById('audioElement');
+            
+            songTitle.textContent = songName;
+            audioPlayer.classList.add('playing');
+            audioElement.src = `song/${songName}.mp3`;
+            audioElement.load();
+            audioElement.play().catch(() => {
+                // Autoplay might be blocked; user can press play manually
+            });
+            
+            document.getElementById('songList').classList.remove('visible');
+        }
+
+        // Show trait gallery
+        let currentGallery = null;
+
+        function showTrait(trait) {
+            const newGallery = document.getElementById('gallery-' + trait);
+            
+            document.querySelectorAll('.trait-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            if (currentGallery && currentGallery !== newGallery) {
+                currentGallery.classList.remove('visible');
+            }
+            
+            setTimeout(() => {
+                newGallery.classList.add('visible');
+                currentGallery = newGallery;
+            }, 100);
+        }
+
+        // First Message with typing effect
+        let messageShown = false;
+        function toggleFirstMessage() {
+            const panel = document.getElementById('firstMessagePanel');
+            const typingText = document.getElementById('typingText');
+            
+            if (!messageShown) {
+                panel.classList.add('visible');
+                const message = "It was 19th of January and time must be arround mid afternoon...  and I texted.....  ''Heyy Isha!! I am Samir,  I heard that you are going to attend our BCP exam in English, can you send me notes if you have?''";
+                
+                let i = 0;
+                typingText.textContent = '';
+                
+                const typeInterval = setInterval(() => {
+                    if (i < message.length) {
+                        typingText.textContent += message.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeInterval);
+                    }
+                }, 50);
+                
+                messageShown = true;
+            } else {
+                panel.classList.remove('visible');
+                messageShown = false;
+            }
+        }
+
+        // First Kiss date reveal
+        let kissShown = false;
+        function showFirstKiss() {
+            const panel = document.getElementById('firstKissPanel');
+            const dateReveal = document.getElementById('dateReveal');
+            
+            if (!kissShown) {
+                panel.classList.add('visible');
+                dateReveal.textContent = '';
+                
+                setTimeout(() => {
+                    dateReveal.textContent = '1st April 2024 🥹✨';
+                }, 100);
+                
+                kissShown = true;
+            } else {
+                panel.classList.remove('visible');
+                kissShown = false;
+            }
+        }
+
+        // Allow Enter key for name input
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateName();
+            }
+        });
+    </script>
+</body>
+</html>
